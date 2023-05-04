@@ -1,3 +1,5 @@
+import kotlin.script.experimental.jvm.util.KotlinJars.stdlib
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -37,7 +39,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.2.0"
+        kotlinCompilerExtensionVersion = "1.4.3"
     }
     packagingOptions {
         resources {
@@ -47,21 +49,25 @@ android {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10")
-    implementation("androidx.core:core-ktx:1.10.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
+    implementation(libs.kotlin.stdlib)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.runtime)
 
-    // Unit Test
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.androidx.test.espresso.core)
 
-    // Compose
-    implementation("androidx.activity:activity-compose:1.7.1")
-    implementation("androidx.compose.ui:ui:1.4.2")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.4.2")
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.compose.ui)
+
+//    implementation(libs.androidx.compose.material3)
+//    implementation(libs.androidx.compose.material.iconsExtended)
+//    implementation(libs.androidx.compose.materialWindow)
+    // NOTE : material3 사용하려면 이 의존성 제거 후 위에 주석 3개 풀어야하는데 빌드에러남
     implementation("androidx.compose.material:material:1.4.2")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.4.2")
-    debugImplementation("androidx.compose.ui:ui-tooling:1.4.2")
-    debugImplementation("androidx.compose.ui:ui-test-manifest:1.4.2")
+
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+    debugImplementation(libs.androidx.compose.ui.tooling)
+    debugImplementation(libs.androidx.compose.ui.test.manifest)
 }
