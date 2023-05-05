@@ -3,18 +3,19 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 
+@Suppress("UnstableApiUsage")
 android {
-    namespace = "com.wj.tracky"
-    compileSdk = 33
+    namespace = AndroidConfig.NAMESPACE
+    compileSdk = AndroidConfig.COMPILE_SDK
 
     defaultConfig {
-        applicationId = "com.wj.tracky"
-        minSdk = 28
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = AndroidConfig.NAMESPACE
+        minSdk = AndroidConfig.MIN_SDK
+        targetSdk = AndroidConfig.TARGET_SDK
+        versionCode = AndroidConfig.VERSION_CODE
+        versionName = AndroidConfig.VERSION_NAME
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = AndroidConfig.TEST_INSTRUMENTATION_RUNNER
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -22,8 +23,8 @@ android {
 
     buildTypes {
         getByName("release") {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            isMinifyEnabled = BuildTypes.RELEASE_MINIFY_ENABLED
+            proguardFiles(getDefaultProguardFile(BuildTypes.PROGUARD_DEFAULT), BuildTypes.PROGUARD_RULES)
         }
     }
     compileOptions {
@@ -37,7 +38,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.2.0"
+        kotlinCompilerExtensionVersion = Versions.COMPOSE
     }
     packagingOptions {
         resources {
@@ -47,21 +48,35 @@ android {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10")
-    implementation("androidx.core:core-ktx:1.10.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
+    // Kotlin: Standard library with JDK 8 extensions
+    implementation(Dependencies.KOTLIN_STDLIB)
 
-    // Unit Test
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    // AndroidX Core: Core AndroidX extensions (KTX)
+    implementation(Dependencies.ANDROIDX_CORE_KTX)
 
-    // Compose
-    implementation("androidx.activity:activity-compose:1.7.1")
-    implementation("androidx.compose.ui:ui:1.4.2")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.4.2")
-    implementation("androidx.compose.material:material:1.4.2")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.4.2")
-    debugImplementation("androidx.compose.ui:ui-tooling:1.4.2")
-    debugImplementation("androidx.compose.ui:ui-test-manifest:1.4.2")
+    // AndroidX Lifecycle: Lifecycle-aware components with Kotlin extensions (KTX)
+    implementation(Dependencies.ANDROIDX_LIFECYCLE_KTX)
+
+    // Unit Test: JUnit 4 testing framework for Java and Kotlin projects
+    testImplementation(Dependencies.JUNIT)
+    // AndroidX Test: JUnit extensions for Android, specifically designed for integration with AndroidX libraries
+    androidTestImplementation(Dependencies.ANDROIDX_TEST_EXT_JUNIT)
+    // Espresso: UI testing framework for Android, designed to work well with AndroidX Test
+    androidTestImplementation(Dependencies.ESPRESSO_CORE)
+
+    // Jetpack Compose: Declarative UI toolkit for Android
+    // Activity Compose: Integration of Jetpack Compose with Android Activities
+    implementation(Dependencies.ANDROIDX_ACTIVITY_COMPOSE)
+    // Compose UI: Core UI toolkit and runtime for Jetpack Compose
+    implementation(Dependencies.COMPOSE_UI)
+    // Compose UI Tooling Preview: Preview and interactive mode support for Jetpack Compose
+    implementation(Dependencies.COMPOSE_UI_TOOLING_PREVIEW)
+    // Compose Material: Material Design components and theming for Jetpack Compose
+    implementation(Dependencies.COMPOSE_MATERIAL)
+    // Compose UI Test: Testing support for Jetpack Compose UI, compatible with JUnit 4
+    androidTestImplementation(Dependencies.COMPOSE_UI_TEST_JUNIT4)
+    // Compose UI Tooling: Debugging and development tools for Jetpack Compose UI, available in debug builds
+    debugImplementation(Dependencies.COMPOSE_UI_TOOLING)
+    // Compose UI Test Manifest: Manifest metadata support for Jetpack Compose UI testing, available in debug builds
+    debugImplementation(Dependencies.COMPOSE_UI_TEST_MANIFEST)
 }

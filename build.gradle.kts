@@ -1,10 +1,5 @@
-buildscript {
-    extra.apply {
-        set("composeUiVersion", "1.4.2")
-    }
-}// Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
-    id("com.android.application") version "7.4.2" apply false
-    id("com.android.library") version "7.4.2" apply false
-    id("org.jetbrains.kotlin.android") version "1.7.0" apply false
+    id(Plugins.ANDROID_APPLICATION) version Versions.ANDROID_GRADLE_PLUGIN apply false
+    id(Plugins.ANDROID_LIBRARY) version Versions.ANDROID_GRADLE_PLUGIN apply false
+    id(Plugins.KOTLIN_ANDROID) version Versions.KOTLIN apply false
 }
