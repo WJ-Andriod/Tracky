@@ -1,39 +1,95 @@
 [versions]
+# Specifies the SDK version used when building the app.
 targetSdk = "33"
+# Specifies the minimum SDK version required to run the app.
 minSdk = "28"
-
+# Kotlin version
 kotlin = "1.8.10"
+# Android Gradle Plugin version
 androidGradlePlugin = "7.4.2"
-
+# Devtools KSP
+ksp = "1.8.10-1.0.9"
+# JUnit version
 junit = "4.13.2"
+# AndroidX Test JUnit version
 androidx-test-ext-junit = "1.1.5"
+# AndroidX Test Espresso version
 androidx-test-espresso = "3.5.1"
-
+# AndroidX Core KTX version
 androidx-corektx = "1.10.0"
+# AndroidX Lifecycle Compose version
 androidx-lifecycle-compose = "2.6.1"
+# AndroidX Lifecycle Runtime Compose version
 androidx-lifecycle-runtime-compose = "2.6.0-alpha03"
+# AndroidX Activity Compose version
 androidx-activity-compose = "1.7.1"
+# Material3 Compose version
 material3 = "1.0.1"
+# Jetpack Compose version
 compose = "1.4.2"
+# Jetpack Hilt
+hilt = "2.44"
+# Jetpack Room
+room = "2.4.0"
+# Jetpack Paging
+paging = "3.1.1"
+paging-compose = "1.0.0-alpha18"
+
 
 [plugins]
+# Plugin for building Android applications
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+
+# Plugin for building Android libraries
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+
+# Plugin for building Android applications or libraries with Kotlin
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 
+# Plugin Dev Tools KSP
+google-devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+
+# Plugin for hilt
+google-dagger-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt"}
+
 [libraries]
+# AndroidX Core & Lifecycle
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-corektx" }
 androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidx-lifecycle-compose" }
+
+# AndroidX Activity & Compose
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity-compose" }
 androidx-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
-androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
+
+# Android Jetpack Hilt
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt"}
+hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt"}
+
+# AndroidX Jetpack Room
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+androidx-room-paging = { module = "androidx.room:room-paging", version.ref = "room" }
+
+#AndroidX Jetpack Paging
+androidx-paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "paging" }
+androidx-paging-common = { module = "androidx.paging:paging-common", version.ref = "paging" }
+androidx-paging-compose = { module = "androidx.paging:paging-compose", version.ref = "paging-compose" }
+
+# AndroidX Material3 Compose
 androidx-compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
 androidx-compose-material-iconsExtended = { module = "androidx.compose.material:material-icons-extended", version.ref = "material3" }
 androidx-compose-materialWindow = { module = "androidx.compose.material3:material3-window-size-class", version.ref = "material3" }
+
+# AndroidX Compose UI Tooling & Testing
+androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 androidx-compose-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose" }
 androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 androidx-compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
+
+# Testing
 junit = { module = "junit:junit", version.ref = "junit" }
 androidx-test-ext-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-test-ext-junit" }
 androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "androidx-test-espresso" }
+
+# Kotlin
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
