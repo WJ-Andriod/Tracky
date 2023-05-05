@@ -35,22 +35,30 @@ room = "2.4.0"
 paging = "3.1.1"
 paging-compose = "1.0.0-alpha18"
 
+ktlint = "10.2.1"
+detekt = "1.22.0"
 
 [plugins]
-# Plugin for building Android applications
+# building Android applications
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 
-# Plugin for building Android libraries
+# building Android libraries
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 
-# Plugin for building Android applications or libraries with Kotlin
+# building Android applications or libraries with Kotlin
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 
-# Plugin Dev Tools KSP
+# Dev Tools KSP
 google-devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
-# Plugin for hilt
+# hilt
 google-dagger-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt"}
+
+# ktlint
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint"}
+
+# detekt
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt"}
 
 [libraries]
 # AndroidX Core & Lifecycle

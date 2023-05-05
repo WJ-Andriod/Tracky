@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SmellBaseline>
+    <Blacklist timestamp="INSERT_TIMESTAMP_HERE">
+        <!-- Files with issues that are ignored in the baseline -->
+    </Blacklist>
+    <Whitelist timestamp="INSERT_TIMESTAMP_HERE">
+        <!-- Files without any issues -->
+    </Whitelist>
+</SmellBaseline>
