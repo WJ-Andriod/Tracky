@@ -1,8 +1,8 @@
-import kotlin.script.experimental.jvm.util.KotlinJars.stdlib
-
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.google.devtools.ksp)
+    alias(libs.plugins.google.dagger.hilt.android)
 }
 
 @Suppress("UnstableApiUsage")
@@ -60,6 +60,21 @@ dependencies {
     // AndroidX Activity & Compose
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.ui)
+
+    // Jetpack Hilt
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
+
+    // Jetpack Room
+    implementation(libs.androidx.room.runtime)
+    annotationProcessor(libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.paging)
+
+    // Jetpack Paging
+    implementation(libs.androidx.paging.runtime)
+    implementation(libs.androidx.paging.common)
+    implementation(libs.androidx.paging.compose)
 
     // AndroidX Material3 Compose
     implementation(libs.androidx.compose.material3)

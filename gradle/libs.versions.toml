@@ -7,6 +7,8 @@ minSdk = "28"
 kotlin = "1.8.10"
 # Android Gradle Plugin version
 androidGradlePlugin = "7.4.2"
+# Devtools KSP
+ksp = "1.8.10-1.0.9"
 # JUnit version
 junit = "4.13.2"
 # AndroidX Test JUnit version
@@ -23,8 +25,16 @@ androidx-lifecycle-runtime-compose = "2.6.0-alpha03"
 androidx-activity-compose = "1.7.1"
 # Material3 Compose version
 material3 = "1.0.1"
-# Compose version
+# Jetpack Compose version
 compose = "1.4.2"
+# Jetpack Hilt
+hilt = "2.44"
+# Jetpack Room
+room = "2.4.0"
+# Jetpack Paging
+paging = "3.1.1"
+paging-compose = "1.0.0-alpha18"
+
 
 [plugins]
 # Plugin for building Android applications
@@ -36,6 +46,12 @@ android-library = { id = "com.android.library", version.ref = "androidGradlePlug
 # Plugin for building Android applications or libraries with Kotlin
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 
+# Plugin Dev Tools KSP
+google-devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+
+# Plugin for hilt
+google-dagger-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt"}
+
 [libraries]
 # AndroidX Core & Lifecycle
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-corektx" }
@@ -44,6 +60,20 @@ androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-kt
 # AndroidX Activity & Compose
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity-compose" }
 androidx-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
+
+# Android Jetpack Hilt
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt"}
+hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt"}
+
+# AndroidX Jetpack Room
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+androidx-room-paging = { module = "androidx.room:room-paging", version.ref = "room" }
+
+#AndroidX Jetpack Paging
+androidx-paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "paging" }
+androidx-paging-common = { module = "androidx.paging:paging-common", version.ref = "paging" }
+androidx-paging-compose = { module = "androidx.paging:paging-compose", version.ref = "paging-compose" }
 
 # AndroidX Material3 Compose
 androidx-compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
