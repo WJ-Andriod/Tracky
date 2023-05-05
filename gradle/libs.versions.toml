@@ -1,39 +1,65 @@
 [versions]
+# Specifies the SDK version used when building the app.
 targetSdk = "33"
+# Specifies the minimum SDK version required to run the app.
 minSdk = "28"
-
+# Kotlin version
 kotlin = "1.8.10"
+# Android Gradle Plugin version
 androidGradlePlugin = "7.4.2"
-
+# JUnit version
 junit = "4.13.2"
+# AndroidX Test JUnit version
 androidx-test-ext-junit = "1.1.5"
+# AndroidX Test Espresso version
 androidx-test-espresso = "3.5.1"
-
+# AndroidX Core KTX version
 androidx-corektx = "1.10.0"
+# AndroidX Lifecycle Compose version
 androidx-lifecycle-compose = "2.6.1"
+# AndroidX Lifecycle Runtime Compose version
 androidx-lifecycle-runtime-compose = "2.6.0-alpha03"
+# AndroidX Activity Compose version
 androidx-activity-compose = "1.7.1"
+# Material3 Compose version
 material3 = "1.0.1"
+# Compose version
 compose = "1.4.2"
 
 [plugins]
+# Plugin for building Android applications
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+
+# Plugin for building Android libraries
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+
+# Plugin for building Android applications or libraries with Kotlin
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 
 [libraries]
+# AndroidX Core & Lifecycle
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-corektx" }
 androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidx-lifecycle-compose" }
+
+# AndroidX Activity & Compose
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity-compose" }
 androidx-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
-androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
+
+# AndroidX Material3 Compose
 androidx-compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
 androidx-compose-material-iconsExtended = { module = "androidx.compose.material:material-icons-extended", version.ref = "material3" }
 androidx-compose-materialWindow = { module = "androidx.compose.material3:material3-window-size-class", version.ref = "material3" }
+
+# AndroidX Compose UI Tooling & Testing
+androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 androidx-compose-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose" }
 androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 androidx-compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
+
+# Testing
 junit = { module = "junit:junit", version.ref = "junit" }
 androidx-test-ext-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-test-ext-junit" }
 androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "androidx-test-espresso" }
+
+# Kotlin
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
