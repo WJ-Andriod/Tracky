@@ -1,0 +1,74 @@
+config:
+  baseline: baseline.xml
+
+naming:
+  FunctionNaming:
+    functionPattern: '[a-zA-Z][a-zA-Z0-9]*' # @Composable functions that return Unit are named using PascalCase.
+    # Ensure function names follow the specified pattern
+
+  TopLevelPropertyNaming:
+    constantPattern: '[A-Z][A-Za-z0-9]*' # Compose guidelines prescribe CamelCase for top-level constants.
+    # Ensure top-level property names follow the specified pattern
+
+style:
+  MagicNumber:
+    ignorePropertyDeclaration: true
+    # Ensure no magic numbers are used, except for property declarations
+
+  MaxLineLength:
+    maxLineLength: 120
+    # Set a maximum line length
+
+  MaxFunctionLength:
+    maxFunctionLength: 30
+    # Set a maximum function length
+
+  MaxFileLength:
+    maxFileLength: 300
+    # Set a maximum file length
+
+  MaxClassLength:
+    maxClassLength: 600
+    # Set a maximum class length
+
+  MaxParameterListLength:
+    maxParameterListLength: 5
+    # Set a maximum number of parameters for a function
+
+  MaxMethodOverloading:
+    maxOverloads: 6
+    # Set a maximum number of overloaded methods for a single method
+
+  UnusedPrivateMember:
+    ignoreAnnotated: ['Preview']
+    # Detect unused private members, except for those annotated with @Preview
+
+complexity:
+  LongMethod:
+    maxMethodLength: 15
+    # Detect long methods with a maximum allowed method length
+
+  LongParameterList:
+    functionThreshold: 5
+    ignoreDefaultParameters: true
+    # Detect long parameter lists with a maximum allowed number of parameters, ignoring default parameters
+
+  LargeClass:
+    maxClassSize: 300
+    # Detect large classes with a maximum allowed class size
+
+  NestedBlockDepth:
+    maxDepth: 4
+    # Detect nested blocks with a depth greater than the specified value
+
+  MethodOverloading:
+    threshold: 6
+    # Detect a high number of overloaded methods in a single class
+
+  TooManyFunctions:
+    thresholdInFiles: 30
+    thresholdInClasses: 20
+    thresholdInInterfaces: 10
+    thresholdInObjects: 20
+    thresholdInEnums: 5
+    # Detect too many functions in a single class, object, interface, or file
