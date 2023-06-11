@@ -1,5 +1,7 @@
 package com.tracky.youtubemusicsample.domain.model
 
+import com.google.gson.annotations.JsonAdapter
+
 data class YoutubeFeeds(
     val youtubeFeeds: List<YoutubeFeed>
 )
@@ -11,7 +13,7 @@ sealed class YoutubeFeed(
     open val imageUrl: String,
     open val contentType: String
 ) {
-    // 다시 듣기
+    @JsonAdapter(ReplayFeedDeserializer::class)
     data class ReplayFeed(
         override val id: String,
         override val title: String,
@@ -27,7 +29,7 @@ sealed class YoutubeFeed(
         contentType = contentType
     )
 
-    // 인기 급상승곡
+    @JsonAdapter(ChartTopperFeedDeserializer::class)
     data class ChartTopperFeed(
         override val id: String,
         override val title: String,
@@ -43,7 +45,7 @@ sealed class YoutubeFeed(
         contentType = contentType
     )
 
-    // 빠른 선곡
+    @JsonAdapter(UpbeatPlayListFeedDeserializer::class)
     data class UpbeatPlayListFeed(
         override val id: String,
         override val title: String,
@@ -59,7 +61,7 @@ sealed class YoutubeFeed(
         contentType = contentType
     )
 
-    // 중간 음악 결산
+    @JsonAdapter(InterimFinancialReportMusicFeedDeserializer::class)
     data class InterimFinancialReportMusicFeed(
         override val id: String,
         override val title: String,
@@ -75,7 +77,7 @@ sealed class YoutubeFeed(
         contentType = contentType
     )
 
-    // 차트
+    @JsonAdapter(ChartFeedDeserializer::class)
     data class ChartFeed(
         override val id: String,
         override val title: String,
@@ -95,7 +97,7 @@ sealed class YoutubeFeed(
         contentType = contentType
     )
 
-    // 뮤직비디오
+    @JsonAdapter(MusicVideoFeedDeserializer::class)
     data class MusicVideoFeed(
         override val id: String,
         override val title: String,
@@ -111,14 +113,14 @@ sealed class YoutubeFeed(
         contentType = contentType
     )
 
-    // 중간 비디오
+    @JsonAdapter(InterimFinancialReportVideoFeedDeserializer::class)
     data class InterimFinancialReportVideoFeed(
         override val id: String,
         override val title: String,
         override val description: String,
         override val imageUrl: String,
         override val contentType: String,
-        val mainlyVideoList: List<Album.Video>
+        val mainlyVideoList: List<MainlyVideoList>
     ) : YoutubeFeed(
         id = id,
         title = title,
@@ -127,7 +129,7 @@ sealed class YoutubeFeed(
         contentType = contentType
     )
 
-    // 추천
+    @JsonAdapter(RecommendFeedDeserializer::class)
     data class RecommendFeed(
         override val id: String,
         override val title: String,
@@ -145,12 +147,14 @@ sealed class YoutubeFeed(
     )
 }
 
+@JsonAdapter(MainlyMusicListDeserializer::class)
 data class MainlyMusicList(
     val mainlyThumbnail: String,
     val mainlyTitle: String,
     val musics: List<Album.Music>
 )
 
+@JsonAdapter(MainlyVideoListDeserializer::class)
 data class MainlyVideoList(
     val mainlyThumbnail: String,
     val mainlyTitle: String,
@@ -167,6 +171,7 @@ sealed class Album(
     open val views: String,
     open val nation: String
 ) {
+    @JsonAdapter(MusicDeserializer::class)
     data class Music(
         override val title: String,
         override val description: String,
@@ -187,6 +192,7 @@ sealed class Album(
         nation = nation
     )
 
+    @JsonAdapter(VideoDeserializer::class)
     data class Video(
         override val title: String,
         override val description: String,
@@ -208,6 +214,7 @@ sealed class Album(
     )
 }
 
+@JsonAdapter(ArtistDeserializer::class)
 data class Artist(
     val name: String,
     val imageUrl: String,
