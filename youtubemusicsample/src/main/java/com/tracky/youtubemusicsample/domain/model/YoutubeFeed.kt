@@ -102,7 +102,7 @@ sealed class YoutubeFeed(
         override val description: String,
         override val imageUrl: String,
         override val contentType: String,
-        val videos: List<Album.Video>
+        val mainlyVideoList: List<MainlyVideoList>
     ) : YoutubeFeed(
         id = id,
         title = title,

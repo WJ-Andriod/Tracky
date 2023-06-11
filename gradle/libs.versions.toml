@@ -105,4 +105,4 @@ androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core",
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
 
 # gson
-google-gson = { module = "com.google.code.gson:gson", version = "gson" }
+google-gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
