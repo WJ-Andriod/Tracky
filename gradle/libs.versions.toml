@@ -35,6 +35,8 @@ room = "2.4.0"
 paging = "3.1.1"
 paging-compose = "1.0.0-alpha18"
 
+gson = "2.10.1"
+
 ktlint = "10.2.1"
 detekt = "1.22.0"
 
@@ -101,3 +103,6 @@ androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core",
 
 # Kotlin
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
+
+# gson
+google-gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
