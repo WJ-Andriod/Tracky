@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Tracky"
 include(":app")
+include(":youtubemusicsample")
