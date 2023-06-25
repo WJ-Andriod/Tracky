@@ -45,7 +45,7 @@ class ReplayFeedDeserializer : JsonDeserializer<YoutubeFeed.ReplayFeed> {
             id = obj?.get(ID)?.asString ?: EMPTY,
             title = obj?.get(TITLE)?.asString ?: EMPTY,
             description = obj?.get(DESCRIPTION)?.asString ?: EMPTY,
-            imageUrl = obj?.get(IMAGE_URL)?.asString ?: EMPTY,
+            imageUrl = obj?.get(IMAGE_URL)?.asInt ?: 0,
             contentType = obj?.get(CONTENT_TYPE)?.asString ?: EMPTY,
             userName = obj?.get(NAME)?.asString ?: EMPTY
         )
@@ -62,7 +62,7 @@ class ChartTopperFeedDeserializer : JsonDeserializer<YoutubeFeed.ChartTopperFeed
             id = obj?.get(ID)?.asString ?: EMPTY,
             title = obj?.get(TITLE)?.asString ?: EMPTY,
             description = obj?.get(DESCRIPTION)?.asString ?: EMPTY,
-            imageUrl = obj?.get(IMAGE_URL)?.asString ?: EMPTY,
+            imageUrl = obj?.get(IMAGE_URL)?.asInt ?: 0,
             contentType = obj?.get(CONTENT_TYPE)?.asString ?: EMPTY,
             musics = obj?.get(MUSICS)?.toString().parseJson<List<Album.Music>>().orEmpty()
         )
@@ -79,7 +79,7 @@ class UpbeatPlayListFeedDeserializer : JsonDeserializer<YoutubeFeed.UpbeatPlayLi
             id = obj?.get(ID)?.asString ?: EMPTY,
             title = obj?.get(TITLE)?.asString ?: EMPTY,
             description = obj?.get(DESCRIPTION)?.asString ?: EMPTY,
-            imageUrl = obj?.get(IMAGE_URL)?.asString ?: EMPTY,
+            imageUrl = obj?.get(IMAGE_URL)?.asInt ?: 0,
             contentType = obj?.get(CONTENT_TYPE)?.asString ?: EMPTY,
             musics = obj?.get(MUSICS)?.toString().parseJson<List<Album.Music>>().orEmpty()
         )
@@ -96,7 +96,7 @@ class InterimFinancialReportMusicFeedDeserializer : JsonDeserializer<YoutubeFeed
             id = obj?.get(ID)?.asString ?: EMPTY,
             title = obj?.get(TITLE)?.asString ?: EMPTY,
             description = obj?.get(DESCRIPTION)?.asString ?: EMPTY,
-            imageUrl = obj?.get(IMAGE_URL)?.asString ?: EMPTY,
+            imageUrl = obj?.get(IMAGE_URL)?.asInt ?: 0,
             contentType = obj?.get(CONTENT_TYPE)?.asString ?: EMPTY,
             mainlyMusicList = obj?.get(MAINLY_MUSIC_LIST).toString().parseJson<List<MainlyMusicList>>().orEmpty()
         )
@@ -113,7 +113,7 @@ class ChartFeedDeserializer : JsonDeserializer<YoutubeFeed.ChartFeed> {
             id = obj?.get(ID)?.asString ?: EMPTY,
             title = obj?.get(TITLE)?.asString ?: EMPTY,
             description = obj?.get(DESCRIPTION)?.asString ?: EMPTY,
-            imageUrl = obj?.get(IMAGE_URL)?.asString ?: EMPTY,
+            imageUrl = obj?.get(IMAGE_URL)?.asInt ?: 0,
             contentType = obj?.get(CONTENT_TYPE)?.asString ?: EMPTY,
             top100Musics = obj?.get(TOP_100_MUSICS)?.toString().parseJson<List<Album.Music>>().orEmpty(),
             top100Videos = obj?.get(TOP_100_VIDEOS)?.toString().parseJson<List<Album.Video>>().orEmpty(),
@@ -134,7 +134,7 @@ class MusicVideoFeedDeserializer : JsonDeserializer<YoutubeFeed.MusicVideoFeed> 
             id = obj?.get(ID)?.asString ?: EMPTY,
             title = obj?.get(TITLE)?.asString ?: EMPTY,
             description = obj?.get(DESCRIPTION)?.asString ?: EMPTY,
-            imageUrl = obj?.get(IMAGE_URL)?.asString ?: EMPTY,
+            imageUrl = obj?.get(IMAGE_URL)?.asInt ?: 0,
             contentType = obj?.get(CONTENT_TYPE)?.asString ?: EMPTY,
             mainlyVideoList = obj?.get(MAINLY_VIDEO_LIST).toString().parseJson<List<MainlyVideoList>>().orEmpty()
         )
@@ -151,7 +151,7 @@ class InterimFinancialReportVideoFeedDeserializer : JsonDeserializer<YoutubeFeed
             id = obj?.get(ID)?.asString ?: EMPTY,
             title = obj?.get(TITLE)?.asString ?: EMPTY,
             description = obj?.get(DESCRIPTION)?.asString ?: EMPTY,
-            imageUrl = obj?.get(IMAGE_URL)?.asString ?: EMPTY,
+            imageUrl = obj?.get(IMAGE_URL)?.asInt ?: 0,
             contentType = obj?.get(CONTENT_TYPE)?.asString ?: EMPTY,
             mainlyVideoList = obj?.get(MAINLY_VIDEO_LIST).toString().parseJson<List<MainlyVideoList>>().orEmpty()
         )
@@ -168,7 +168,7 @@ class RecommendFeedDeserializer : JsonDeserializer<YoutubeFeed.RecommendFeed> {
             id = obj?.get(ID)?.asString ?: EMPTY,
             title = obj?.get(TITLE)?.asString ?: EMPTY,
             description = obj?.get(DESCRIPTION)?.asString ?: EMPTY,
-            imageUrl = obj?.get(IMAGE_URL)?.asString ?: EMPTY,
+            imageUrl = obj?.get(IMAGE_URL)?.asInt ?: 0,
             contentType = obj?.get(CONTENT_TYPE)?.asString ?: EMPTY,
             totalMusicCount = obj?.get(TOTAL_MUSIC_COUNT)?.asString ?: EMPTY,
             musics = obj?.get(MUSICS)?.toString()?.parseJson<List<Album.Music>>().orEmpty()
@@ -183,7 +183,7 @@ class MainlyVideoListDeserializer : JsonDeserializer<MainlyVideoList> {
         context: JsonDeserializationContext?
     ): MainlyVideoList = json?.asJsonObject.let { obj ->
         MainlyVideoList(
-            mainlyThumbnail = obj?.get(THUMBNAIL)?.asString ?: EMPTY,
+            mainlyThumbnail = obj?.get(THUMBNAIL)?.asInt ?: 0,
             mainlyTitle = obj?.get(TITLE)?.asString ?: EMPTY,
             videos = obj?.get(VIDEOS)?.toString()?.parseJson<List<Album.Video>>().orEmpty()
         )
@@ -197,7 +197,7 @@ class MainlyMusicListDeserializer : JsonDeserializer<MainlyMusicList> {
         context: JsonDeserializationContext?
     ): MainlyMusicList = json?.asJsonObject.let { obj ->
         MainlyMusicList(
-            mainlyThumbnail = obj?.get(THUMBNAIL)?.asString ?: EMPTY,
+            mainlyThumbnail = obj?.get(THUMBNAIL)?.asInt ?: 0,
             mainlyTitle = obj?.get(TITLE)?.asString ?: EMPTY,
             musics = obj?.get(MUSICS)?.toString()?.parseJson<List<Album.Music>>().orEmpty()
         )
@@ -214,7 +214,7 @@ class VideoDeserializer : JsonDeserializer<Album.Video> {
             title = obj?.get(TITLE)?.asString ?: EMPTY,
             description = obj?.get(DESCRIPTION)?.asString ?: EMPTY,
             year = obj?.get(YEAR)?.asString ?: EMPTY,
-            thumbnail = obj?.get(THUMBNAIL)?.asString ?: EMPTY,
+            thumbnail = obj?.get(THUMBNAIL)?.asInt ?: 0,
             artist = obj?.get(ARTIST)?.asJsonObject.convertArtist(),
             duration = obj?.get(DURATION)?.asString ?: EMPTY,
             views = obj?.get(VIEWS)?.asString ?: EMPTY,
@@ -233,7 +233,7 @@ class MusicDeserializer : JsonDeserializer<Album.Music> {
             title = obj?.get(TITLE)?.asString ?: EMPTY,
             description = obj?.get(DESCRIPTION)?.asString ?: EMPTY,
             year = obj?.get(YEAR)?.asString ?: EMPTY,
-            thumbnail = obj?.get(THUMBNAIL)?.asString ?: EMPTY,
+            thumbnail = obj?.get(THUMBNAIL)?.asInt ?: 0,
             artist = obj?.get(ARTIST)?.asJsonObject.convertArtist(),
             duration = obj?.get(DURATION)?.asString ?: EMPTY,
             views = obj?.get(VIEWS)?.asString ?: EMPTY,
@@ -250,7 +250,7 @@ class ArtistDeserializer : JsonDeserializer<Artist> {
     ): Artist = json?.asJsonObject.let { obj ->
         Artist(
             name = obj?.get(NAME)?.asString ?: EMPTY,
-            imageUrl = obj?.get(IMAGE_URL)?.asString ?: EMPTY,
+            imageUrl = obj?.get(IMAGE_URL)?.asInt ?: 0,
             debutYear = obj?.get(DEBUT_YEAR)?.asString ?: EMPTY,
             totalSubscriber = obj?.get(TOTAL_SUBSCRIBER)?.asString ?: EMPTY
         )
@@ -260,7 +260,7 @@ class ArtistDeserializer : JsonDeserializer<Artist> {
 fun JsonObject?.convertArtist(): Artist {
     return this?.get(ALBUM_ARTIST)?.toString().parseJson<Artist>() ?: Artist(
         name = EMPTY,
-        imageUrl = EMPTY,
+        imageUrl = 0,
         debutYear = EMPTY,
         totalSubscriber = EMPTY
     )

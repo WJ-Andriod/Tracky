@@ -34,6 +34,8 @@ room = "2.4.0"
 # Jetpack Paging
 paging = "3.1.1"
 paging-compose = "1.0.0-alpha18"
+# Hilt Compose
+hilt-compose = "1.0.0"
 
 gson = "2.10.1"
 
@@ -95,6 +97,9 @@ androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling
 androidx-compose-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose" }
 androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 androidx-compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
+
+# AndroidX Compose Navigation VideModel
+androidx-hilt-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hilt-compose" }
 
 # Testing
 junit = { module = "junit:junit", version.ref = "junit" }
