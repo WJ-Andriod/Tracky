@@ -1,13 +1,22 @@
 package com.tracky.youtubemusicsample.data
 
 import com.tracky.youtubemusicsample.domain.model.YoutubeFeeds
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-//class DataSourceImpl(private val dispatcher: CoroutineDispatcher = Dispatchers.IO) : DataSource {
-//    override suspend fun initialFetch(): YoutubeFeeds =
-//        withContext(dispatcher) {
-//            YoutubeFeeds()
-//        }
-//}
+class DataSourceImpl @Inject constructor() : DataSource {
+    override suspend fun initialFetch(): YoutubeFeeds = getYoutubeFeeds()
+
+    private fun getYoutubeFeeds() = YoutubeFeeds(
+        tabs = tabs,
+        youtubeFeeds = listOf(
+            replayFeed,
+            chartTopperFeeds.random(),
+            upbeatPlayListFeeds.random(),
+            interimFinancialReportMusicFeeds.random(),
+            chartFeeds.random(),
+            musicVideoFeeds.random(),
+            interimFinancialReportVideoFeeds.random(),
+            recommendFeeds.random()
+        )
+    )
+}

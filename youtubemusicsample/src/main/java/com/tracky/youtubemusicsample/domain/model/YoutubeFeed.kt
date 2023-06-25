@@ -1,16 +1,18 @@
 package com.tracky.youtubemusicsample.domain.model
 
+import androidx.annotation.DrawableRes
 import com.google.gson.annotations.JsonAdapter
 
 data class YoutubeFeeds(
-    val youtubeFeeds: List<YoutubeFeed>
+    val tabs: List<Tab> = emptyList(),
+    val youtubeFeeds: List<YoutubeFeed> = emptyList()
 )
 
 sealed class YoutubeFeed(
     open val id: String,
     open val title: String,
     open val description: String,
-    open val imageUrl: String,
+    @DrawableRes open val imageUrl: Int,
     open val contentType: String
 ) {
     @JsonAdapter(ReplayFeedDeserializer::class)
@@ -18,7 +20,7 @@ sealed class YoutubeFeed(
         override val id: String,
         override val title: String,
         override val description: String,
-        override val imageUrl: String,
+        @DrawableRes override val imageUrl: Int,
         override val contentType: String,
         val userName: String
     ) : YoutubeFeed(
@@ -34,7 +36,7 @@ sealed class YoutubeFeed(
         override val id: String,
         override val title: String,
         override val description: String,
-        override val imageUrl: String,
+        override val imageUrl: Int,
         override val contentType: String,
         val musics: List<Album.Music>
     ) : YoutubeFeed(
@@ -50,7 +52,7 @@ sealed class YoutubeFeed(
         override val id: String,
         override val title: String,
         override val description: String,
-        override val imageUrl: String,
+        override val imageUrl: Int,
         override val contentType: String,
         val musics: List<Album.Music>
     ) : YoutubeFeed(
@@ -66,7 +68,7 @@ sealed class YoutubeFeed(
         override val id: String,
         override val title: String,
         override val description: String,
-        override val imageUrl: String,
+        override val imageUrl: Int,
         override val contentType: String,
         val mainlyMusicList: List<MainlyMusicList>
     ) : YoutubeFeed(
@@ -82,7 +84,7 @@ sealed class YoutubeFeed(
         override val id: String,
         override val title: String,
         override val description: String,
-        override val imageUrl: String,
+        override val imageUrl: Int,
         override val contentType: String,
         val top100Musics: List<Album.Music>,
         val top100Videos: List<Album.Video>,
@@ -102,7 +104,7 @@ sealed class YoutubeFeed(
         override val id: String,
         override val title: String,
         override val description: String,
-        override val imageUrl: String,
+        override val imageUrl: Int,
         override val contentType: String,
         val mainlyVideoList: List<MainlyVideoList>
     ) : YoutubeFeed(
@@ -118,7 +120,7 @@ sealed class YoutubeFeed(
         override val id: String,
         override val title: String,
         override val description: String,
-        override val imageUrl: String,
+        override val imageUrl: Int,
         override val contentType: String,
         val mainlyVideoList: List<MainlyVideoList>
     ) : YoutubeFeed(
@@ -134,7 +136,7 @@ sealed class YoutubeFeed(
         override val id: String,
         override val title: String,
         override val description: String,
-        override val imageUrl: String,
+        override val imageUrl: Int,
         override val contentType: String,
         val totalMusicCount: String,
         val musics: List<Album.Music>
@@ -149,14 +151,14 @@ sealed class YoutubeFeed(
 
 @JsonAdapter(MainlyMusicListDeserializer::class)
 data class MainlyMusicList(
-    val mainlyThumbnail: String,
+    val mainlyThumbnail: Int,
     val mainlyTitle: String,
     val musics: List<Album.Music>
 )
 
 @JsonAdapter(MainlyVideoListDeserializer::class)
 data class MainlyVideoList(
-    val mainlyThumbnail: String,
+    val mainlyThumbnail: Int,
     val mainlyTitle: String,
     val videos: List<Album.Video>
 )
@@ -165,7 +167,7 @@ sealed class Album(
     open val title: String,
     open val description: String,
     open val year: String,
-    open val thumbnail: String,
+    @DrawableRes open val thumbnail: Int,
     open val artist: Artist,
     open val duration: String,
     open val views: String,
@@ -176,7 +178,7 @@ sealed class Album(
         override val title: String,
         override val description: String,
         override val year: String,
-        override val thumbnail: String,
+        override val thumbnail: Int,
         override val artist: Artist,
         override val duration: String,
         override val views: String,
@@ -197,7 +199,7 @@ sealed class Album(
         override val title: String,
         override val description: String,
         override val year: String,
-        override val thumbnail: String,
+        override val thumbnail: Int,
         override val artist: Artist,
         override val duration: String,
         override val views: String,
@@ -217,7 +219,12 @@ sealed class Album(
 @JsonAdapter(ArtistDeserializer::class)
 data class Artist(
     val name: String,
-    val imageUrl: String,
+    @DrawableRes val imageUrl: Int,
     val debutYear: String,
     val totalSubscriber: String
+)
+
+data class Tab(
+    val title: String,
+    val isSelected: Boolean = false
 )
